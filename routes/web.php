@@ -52,16 +52,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-//     // route for switching roles
-//     Route::patch('/profile/switch-role', [ProfileController::class, 'switchRole'])->name('profile.switchRole');
-//     Route::patch('/profile/update-braider-field', [ProfileController::class, 'updateBraiderField'])->name('profile.updateBraiderField');
-
-// });
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
@@ -88,11 +78,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::patch('/braider/profile/update', [BraiderController::class, 'updateProfile'])->name('braider.updateProfile');
-
-// Route::get('/braiders', function () {
-//     $braiders = Braider::all();
-//     return view('braiders', ['braiders' => $braiders]);
-// })->middleware(['auth', 'verified'])->name('braiders');
 
 Route::get('/braiders', function () {
     $braiders = Braider::all();
